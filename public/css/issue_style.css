@@ -1,0 +1,37 @@
+.issue-container {
+  padding: 1.5rem;
+  border: #2d2d2d solid 2px;
+  border-radius: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.side-data-container {
+  margin-top: 2rem;
+  text-align: left;
+}
+.issue-id, .side-data-container {
+  font-size: 0.6rem;
+}
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 6rem;
+}
+.btn {
+  padding: 1rem;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  margin-left: -1px;
+}
+.btn:hover {
+  background: white;
+  color: black;
+}
+.btn-delete {
+  border-color: red
+}
+.btn-delete:hover {
+  background-color: red;
+}

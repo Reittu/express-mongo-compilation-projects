@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.glitch.com/a131b892-3563-4249-bd6b-5b8f09d6f557%2Ffavicon.ico?v=1580125845578" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Express Compilation Project - /b/</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/form_style.css" />
+  </head>
+
+  <body>
+    <h1>Board index</h1>
+    <div class="board-wrapper">
+      <form action="/api/boards" method="post">
+        <h2>Create a new board</h2>
+        <input
+          id="board"
+          type="text"
+          name="name"
+          placeholder="Board name"
+          required
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <div class="board-container">
+        <div class="board header">
+          <span>Board Name</span>
+          <span>Thread Count</span>
+          <span>Link</span>
+        </div>
+      </div>
+    </div>
+    <script src="/js/boardIndex.js"></script>
+  </body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .board-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .header {
+    font-weight: bold;
+    background-color: #2a5f4d !important;
+    color: #fff !important;
+  }
+  .board {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    animation: 0.5s ease-out appear forwards;
+    color: #000;
+  }
+  .board > * {
+    flex: 1;
+  }
+  .board:nth-child(odd) {
+    background-color: #e0ffcc;
+  }
+  .board:nth-child(even) {
+    background-color: #a2daac;
+  }
+  a, a:visited {
+    color: #000 !important;
+  }
+
+  @keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+</style>

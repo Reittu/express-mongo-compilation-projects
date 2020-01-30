@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: #2d2d2d;
+}
+input, textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #dfdfdf;
+  border: none;
+}
+teaxtarea { resize: vertical }
+input:last-of-type {
+  margin-bottom: 0;
+}
+input[type="submit"], .btn-form-style {
+  width: 200px;
+  background-color: #2a5f4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: transform 0.08s ease-in-out;
+  padding: 0.6rem;
+}
+input[type="submit"]:hover, .btn-form-style:hover {
+  transform: scale(1.06);
+}

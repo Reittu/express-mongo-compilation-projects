@@ -1,0 +1,161 @@
+*,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  margin: 0;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+}
+
+.board-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.thread {
+  animation: 0.5s ease-out appear forwards;
+  color: #000;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  box-shadow: 0 0 1rem inset;
+  cursor: pointer;
+}
+.thread:nth-child(odd) {
+  background-color: #a2daac;
+}
+.thread:nth-child(even) {
+  background-color: #e0ffcc;
+}
+.thread:last-child {
+  margin: 0;
+}
+.thread-main {
+  padding-bottom: 3rem;
+  font-weight: bold;
+  position: relative;
+}
+.thread-main::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 0;
+  bottom: 0;
+  background: #299b96;
+  border-radius: 100% 0 0;
+  border-left: 30px double #000000;
+  border-top: 15px double white;
+}
+.thread-reply {
+  position: relative
+}
+.post-info {
+  font-size: 0.6rem;
+  display: flex;
+  padding: 0 1rem;
+  background-color: #2a5f4d;
+  color: white;
+  align-items: center;
+}
+.post-info > .btn {
+  background: none;
+  border: none;
+  color: white;
+  font: 1em "Roboto Mono";
+  padding: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+}
+.post-info > .btn,
+.post-id {
+  flex: 1;
+}
+.post-date {
+  flex: 4;
+}
+.post-text {
+  margin: 0;
+  padding: 1rem;
+  text-align: left;
+}
+.btn-delete:hover {
+  background: #900000;
+}
+.btn-report:hover {
+  background: #ea9905;
+}
+.pagination {
+  flex: 1;
+}
+.pagination-wrapper {
+  padding: 1rem;
+  background-color: #2a5f4d;
+  animation: 0.5s ease-out appear forwards;
+}
+.pagination,
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-button {
+  margin-left: -2px;
+  text-decoration: none;
+  background: white;
+  border: 1px solid black;
+  padding: 0.2rem 0.5rem;
+  flex: 1;
+  max-width: 100px;
+  box-shadow: 0 0 3px 1px inset rgba(0, 0, 0, 0.2);
+  transition: transform 0.07s ease-out;
+}
+
+.pagination-button,
+.pagination-button:visited {
+  color: #000;
+}
+
+.pagination-button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.pagination-button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.pagination-button:hover {
+  transform: scale(1.2);
+}
+.pagination-current {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.pagination-current:hover {
+  transform: none;
+}
+.btn-arrow {
+  background-color: #a2daac;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 481px) {
+  .post-date {
+    font-size: 0.4rem;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+  }
+  .pagination-button {
+    padding: 0;
+  }
+}

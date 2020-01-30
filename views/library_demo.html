@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.glitch.com/a131b892-3563-4249-bd6b-5b8f09d6f557%2Ffavicon.ico?v=1580125845578" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Express Compilation Project - Public Library</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/form_style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2 style="text-align: center">Public Library</h2>
+      <form id="new-book-form" action="/api/books">
+        <input
+          type="text"
+          id="new-book-title"
+          name="title"
+          placeholder="Book title"
+        />
+        <input
+          id="new-book-submit"
+          type="submit"
+          value="Submit a new book"
+          required
+        />
+      </form>
+
+      <ul id="book-list"></ul>
+      <div id="book-detail" style="display: none">
+        <p id="book-title"></p>
+        <ol id="book-comments"></ol>
+        <form id="new-comment-form" action="/api/books/id">
+          <textarea
+            id="new-comment-text"
+            name="comment"
+            placeholder="New Comment"
+            rows="5"
+            maxlength="2000"
+            required
+          ></textarea>
+          <input id="new-comment-submit" type="submit" value="Post a comment" />
+        </form>
+        <button id="book-delete" class="btn-form-style btn-delete">
+          Delete this book
+        </button>
+      </div>
+      <button id="delete-all" class="btn-form-style btn-delete">
+        Delete ALL books
+      </button>
+    </div>
+    <script src="/js/library.js"></script>
+  </body>
+</html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  .btn-form-style {
+    margin-bottom: 1.5rem;
+  }
+  #book-detail {
+    padding: 1.5rem;
+    border: #2d2d2d solid 2px;
+    border-radius: 2rem;
+    margin-bottom: 5rem;
+  }
+  #book-list {
+    padding: 2rem;
+  }
+  .book-item {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  .book-info {
+    flex: 5;
+  }
+  .btn-select {
+    padding: 0.5rem;
+    background: none;
+    border: white 1px solid;
+    color: white;
+    cursor: pointer;
+    margin-left: 1rem;
+    flex: 3;
+  }
+  .btn-select:hover {
+    background-color: white;
+    color: black;
+  }
+  .btn-delete {
+    background-color: #760d2a;
+    display: block;
+    margin: 1.5rem auto;
+  }
+  @media (max-width: 481px) {
+    .btn-delete {
+      width: 100px;
+    }
+  }
+</style>

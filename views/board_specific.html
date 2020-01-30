@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.glitch.com/a131b892-3563-4249-bd6b-5b8f09d6f557%2Ffavicon.ico?v=1580125845578" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Express Compilation Project - /b/</title>
+    <link rel="stylesheet" href="/css/form_style.css" />
+    <link rel="stylesheet" href="/css/board_style.css" />
+  </head>
+
+  <body>
+    <h1 class="board-header">/b/</h1>
+    <div class="board-wrapper">
+      <form id="new-thread-form" action="/api/threads/" method="post">
+        <h2>Post a new thread</h2>
+        <textarea
+          rows="10"
+          maxlength="4000"
+          id="thread"
+          name="text"
+          placeholder="Message"
+          required
+        ></textarea>
+        <input
+          id="delete-password"
+          type="password"
+          name="password"
+          placeholder="Delete password"
+          required
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <h2>Recently active threads</h2>
+      <div class="thread-container"></div>
+      <div class="pagination-wrapper" style="display:none"><div class="pagination"></div></div>
+    </div>
+    <script src="/js/boardSpecific.js"></script>
+  </body>
+</html>

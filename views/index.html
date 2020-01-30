@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.glitch.com/a131b892-3563-4249-bd6b-5b8f09d6f557%2Ffavicon.ico?v=1580125845578" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Express Compilation Project - API</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Full Stack Projects</h1>
+        <h2>Anonymous Message Board</h2>
+        <ul class="method-list">
+            <li class="method-item demo">
+                <p>Create threads and reply to existing threads.</p>
+                <p>Also option to report posts and delete them if correct password given.</p>
+                <p style="font-size: 2rem;"><a href="/b/" class="demo-link" target="_blank">/b/</a></p>
+            </li>
+            <li class="method-item get">
+                <p>Get all boards.</p>
+                <p><a href="/api/boards" class="get-link" target="_blank">/api/threads/&lt;board&gt;</a></p>
+            </li>
+            <li class="method-item post">
+                <p>Create a new board.</p>
+                <p>Required parameters: <strong>name</strong></p>
+                <p class="post-link">/api/threads/&lt;board&gt;</p>
+            </li>
+            <li class="method-item get">
+                <p>Get 10 most recent threads with 3 most recent replies on a specific board.</p>
+                <p><a href="/api/threads/test" class="get-link" target="_blank">/api/threads/&lt;board&gt;</a></p>
+            </li>
+            <li class="method-item post">
+                <p>Post a new thread.</p>
+                <p>Required parameters: <strong>text password</strong></p>
+                <p class="post-link">/api/threads/&lt;board&gt;</p>
+            </li>
+            <li class="method-item put">
+                <p>Report a thread.</p>
+                <p>Required parameters: <strong>thread_id</strong></p>
+                <p class="put-link">/api/threads/&lt;board&gt;</p>
+            </li>
+            <li class="method-item delete">
+                <p>Delete a thread.</p>
+                <p>Required parameters: <strong>thread_id password</strong></p>
+                <p class="delete-link">/api/threads/&lt;board&gt;</p>
+            </li>
+            <li class="method-item post">
+                <p>Post a new reply.</p>
+                <p>Required parameters: <strong>thread_id text password</strong></p>
+                <p class="post-link">/api/replies/&lt;board&gt;</p>
+            </li>
+            <li class="method-item put">
+                <p>Report a reply.</p>
+                <p>Required parameters: <strong>reply_id</strong></p>
+                <p class="put-link">/api/replies/&lt;board&gt;</p>
+            </li>
+            <li class="method-item delete">
+                <p>Delete a reply.</p>
+                <p>Required parameters: <strong>reply_id password</strong></p>
+                <p class="delete-link">/api/replies/&lt;board&gt;</p>
+            </li>
+        </ul>
+        <h2>Public Library</h2>
+        <ul class="method-list">
+            <li class="method-item demo">
+                <p>Add and delete books. Can also post comments on existing books.</p>
+                <p><a href="/demos/library" class="demo-link" target="_blank">/demos/library</a></p>
+            </li>
+            <li class="method-item get">
+                <p>Get all posted books.</p>
+                <p><a href="/api/books" class="get-link" target="_blank">/api/books</a></p>
+            </li>
+            <li class="method-item get">
+                <p>Get a specific book by id.</p>
+                <p class="get-link">/api/books/&lt;book_id&gt;</p>
+            </li>
+            <li class="method-item post">
+                <p>Post a new book.</p>
+                <p>Required parameters: <strong>title</strong></p>
+                <p class="post-link">/api/books</p>
+            </li>
+            <li class="method-item post">
+                <p>Post a new comment.</p>
+                <p>Required parameters: <strong>comment</strong></p>
+                <p class="post-link">/api/books/&lt;book_id&gt;</p>
+            </li>
+            <li class="method-item delete">
+                <p>Delete a specific book (no restrictions, demo).</p>
+                <p class="delete-link">/api/books/&lt;book_id&gt;</p>
+            </li>
+            <li class="method-item delete">
+                <p>Delete all books (no restrictions, demo).</p>
+                <p class="delete-link">/api/books</p>
+            </li>
+        </ul>
+        <h2>Issue Tracker</h2>
+        <ul class="method-list">
+            <li class="method-item demo">
+                <p>Create and manage issues.</p>
+                <p><a href="/issues/management-tool" class="demo-link" target="_blank">/issues/&lt;project_name&gt;</a></p>
+            </li>
+            <li class="method-item get">
+                <p>Get all issues on a specific project.</p>
+                <p>
+                    Optional filtering query parameters:<br><strong>issue_title issue_text created_by assigned_to
+                        status_text open</strong>
+                </p>
+                <p><a class="get-link" target="_blank"
+                        href="/api/issues/management-tool">/api/issues/&lt;project_name&gt;</a></p>
+            </li>
+            <li class="method-item post">
+                <p>Post a new issue on a specific project.</p>
+                <p>
+                    Required parameters: <strong>issue_title, issue_test, created_by</strong><br>
+                    Optional parameters: <strong>assigned_to, status_text, open</strong>
+                </p>
+                <p class="post-link">/api/issues/&lt;project_name&gt;</p>
+            </li>
+            <li class="method-item put">
+                <p>Update an issue.</p>
+                <p>
+                    Required parameters: <strong>id</strong> and <u>at least one</u> of the optional parameters.<br>
+                    Optional parameters: <strong>project_name issue_title issue_text created_by assigned_to status_text
+                        open</strong>
+                </p>
+                <p class="put-link">/api/issues/&lt;project_name&gt;</p>
+            </li>
+            <li class="method-item delete">
+                <p>Delete an issue.</p>
+                <p>Required parameters: <strong>id</strong></p>
+                <p class="delete-link">/api/issues/&lt;project_name&gt;</p>
+            </li>
+        </ul>
+        <h2>Exercise Tracker</h2>
+        <ul class="method-list">
+            <li class="method-item demo">
+                <p>Create users and track exercises.</p>
+                <p><a href="/demos/exercisetracker" class="demo-link" target="_blank">/demos/exercisetracker</a></p>
+            </li>
+            <li class="method-item get">
+                <p class="get-link">
+                    <a href="/api/exercise/users" target="_blank">/api/exercise/users</a>
+                </p>
+            </li>
+            <li class="method-item get">
+                <p class="get-link">
+                    <a href="/api/exercise/log?userId=5e0bcab7665a5d3a874273c0&from=2019-12-30&to=2020-01-01&limit=1"
+                        target="_blank">/api/exercise/log?userId=&lt;userId&gt;from=&lt;from&gt;to=&lt;to&gt;limit=&lt;limit&gt;</a>
+                </p>
+                <p>Required parameters: <strong>userId</strong></p>
+                <p>Optional parameters: <strong>from to limit</strong></p>
+            </li>
+            <li class="method-item post">
+                <p class="post-link">/api/exercise/new-user</p>
+                <p>Required parameters: <strong>username</strong></p>
+            </li>
+            <li class="method-item post">
+                <p class="post-link">/api/exercise/add</p>
+                <p>Required parameters: <strong>userId description duration</strong></p>
+                <p>Optional parameters: <strong>date</strong></p>
+            </li>
+        </ul>
+        <h1>Microservices</h1>
+        <h2>Stock Price Checker API</h2>
+        <ul class="method-list">
+            <li class="method-item get">
+                <p>
+                    Query stock prices of one or two stocks.<br>
+                    You can also like each stock once per IP.
+                </p>
+                <p class="get-link"> <a target="_blank"
+                        href="/api/stock-prices?stock=GOOG">/api/stock-prices?stock=&lt;stock_symbol&gt;</a><br>
+                    <a target="_blank"
+                        href="/api/stock-prices?stock=GOOG&like=true">/api/stock-prices?stock=&lt;stock_symbol&gt;&amp;like=true</a><br>
+                    <a target="_blank"
+                        href="/api/stock-prices?stock=GOOG&stock=MSFT">/api/stock-prices?stock=&lt;stock_symbol_1&gt;&amp;stock=&lt;stock_symbol_2&gt;</a><br>
+                    <a target="_blank"
+                        href="/api/stock-prices?stock=GOOG&stock=MSFT&like=true">/api/stock-prices?stock=&lt;stock_symbol_1&gt;&amp;stock=&lt;stock_symbol_2&gt;&amp;like=true</a>
+                </p>
+            </li>
+            <li class="method-item demo">
+                <p>
+                    <form id="stock-form">
+                        <input id="stock-one" type="text" name="stock" placeholder="GOOG" required>
+                        <input id="stock-two" type="text" name="stock" placeholder="MSFT">
+                        <input id="stock-like" type="checkbox" name="like" value="true">Like (both)
+                        <input id="stock-submit" type="submit" value="Get price(s)" />
+                        <code id="stock-result"></code>
+                    </form>
+                </p>
+            </li>
+        </ul>
+        <h2>Metric-Imperial Converter API</h2>
+        <ul class="method-list">
+            <li class="method-item get">
+                <p>
+                    Convert metric units to imperial or vice versa.<br> Supported abbreviations: "gal", "l", "lb",
+                    "lbs", "kg", "mi" and "km".
+                </p>
+                <p><a class="get-link" target="_blank"
+                        href="/api/convert?input=5/4gal">/api/convert?input=&lt;value&gt;&lt;unit&gt;</a></p>
+            </li>
+            <li class="method-item demo">
+                <p>
+                    <form id="convert-form">
+                        <input type="text" id="convert-input" name="input" placeholder="3.1mi">
+                        <input id="convert-submit" type="submit" value="Convert">
+                        <code id="convert-result"></code>
+                    </form>
+                </p>
+            </li>
+        </ul>
+        <h2>URL Shortener API</h2>
+        <ul class="method-list">
+            <li class="method-item get">
+                <p>
+                    Request a new short URL:
+                    <a class="get-link" target="_blank"
+                        href="/api/shorturl/new/https://www.linkedin.com">/api/shorturl/new/&lt;complete_url&gt;</a>
+                </p>
+            </li>
+            <li class="method-item get">
+                <p>
+                    Use the given short URL:
+                    <a href="/api/shorturl/4" class="get-link" target="_blank">/api/shorturl/&lt;short_url&gt;</a>
+                </p>
+            </li>
+        </ul>
+        <h2>File Analyse API</h2>
+        <ul class="method-list">
+            <li class="method-item demo">
+                <p>
+                    Upload a file to server:
+                    <a href="/demos/fileanalyse" class="demo-link" target="_blank">/demos/fileanalyse</a>
+                </p>
+            </li>
+            <li class="method-item post">
+                <p class="post-link">/api/fileanalyse (multipart/form-data)</p>
+                <p>File will be deleted instantly as it's saved since this is public.</p>
+            </li>
+        </ul>
+
+        <h2>Who am I API</h2>
+        <ul class="method-list">
+            <li class="method-item get">
+                <p><a href="/api/whoami" class="get-link" target="_blank">/api/whoami</a></p>
+            </li>
+        </ul>
+        <h2>Timestamp API</h2>
+        <ul class="method-list">
+            <li class="method-item get">
+                <p>
+                    Request a date either in millis:
+                    <a class="get-link" target="_blank"
+                        href="/api/timestamp/1577145600000">/api/timestamp/&lt;millis&gt;</a>
+                </p>
+                <p>
+                    Or dash separated year, month and date:
+                    <a class="get-link" target="_blank"
+                        href="/api/timestamp/2019-12-24">/api/timestamp/&lt;yyyy-mm-dd&gt;</a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

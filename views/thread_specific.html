@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.glitch.com/a131b892-3563-4249-bd6b-5b8f09d6f557%2Ffavicon.ico?v=1580125845578" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Express Compilation Project - /b/</title>
+    <link rel="stylesheet" href="/css/form_style.css" />
+  </head>
+
+  <body>
+    <div class="thread-wrapper">
+      <h2 class="thread-header">/b/</h2>
+      <div class="thread-container"></div>
+      <form id="reply-form" action="/api/replies/" method="post">
+        <h2>Post a reply</h2>
+        <textarea
+          rows="10"
+          maxlength="4000"
+          id="thread"
+          name="text"
+          placeholder="Message"
+          required
+        ></textarea>
+        <input
+          id="delete-password"
+          type="password"
+          name="password"
+          placeholder="Delete password"
+          required
+        />
+        <input type="hidden" id="thread-id" name="thread_id">
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <script src="/js/threadSpecific.js"></script>
+  </body>
+</html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+  *,
+  ::before {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Roboto Mono", monospace;
+    margin: 0;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+  }
+  textarea {
+    resize: vertical;
+    margin-bottom: 1rem;
+  }
+
+  .thread-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .thread {
+    animation: 0.5s ease-out appear forwards;
+    color: #000;
+    padding: 1rem;
+    box-shadow: 0 0 1rem inset;
+  }
+  .thread, .thread-main, .thread-reply:nth-child(odd) {
+    background-color: #a2daac;
+  }
+  .thread-reply:nth-child(even) {
+    background-color: #e0ffcc;
+  }
+  .thread-main {
+    padding-bottom: 3rem;
+    font-weight: bold;
+    position: relative;
+  }
+  .thread-main::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 0;
+    bottom: 0;
+    background: #299b96;
+    border-radius: 100% 0 0;
+    border-left: 30px double #000000;
+    border-top: 15px double white;
+  }
+  .post-info {
+    font-size: 0.6rem;
+    display: flex;
+    padding: 0 1rem;
+    background-color: #2a5f4d;
+    color: white;
+    align-items: center;
+  }
+  .post-info > .btn {
+    background: none;
+    border: none;
+    color: white;
+    font: 1em "Roboto Mono";
+    padding: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .post-info > .btn,
+  .post-id {
+    flex: 1;
+  }
+  .post-date {
+    flex: 4;
+  }
+  .post-text {
+    margin: 0;
+    padding: 1rem;
+    text-align: left;
+  }
+  .btn-delete:hover {
+    background: #900000;
+  }
+  .btn-report:hover {
+    background: #ea9905;
+  }
+
+  @keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+</style>

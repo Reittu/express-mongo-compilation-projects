@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.glitch.com/a131b892-3563-4249-bd6b-5b8f09d6f557%2Ffavicon.ico?v=1580125845578" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Express Compilation Project - Exercise Tracker</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/form_style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <form id="query-all-form">
+        <h2>Query all users</h2>
+        <input id="query-all" type="submit" value="Get all users" />
+        <code id="result-all"></code>
+      </form>
+      <form action="/api/exercise/new-user" method="post">
+        <h2>Create a new user</h2>
+
+        <input
+          id="username"
+          type="text"
+          name="username"
+          placeholder="username"
+          required
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <form action="/api/exercise/add" method="post">
+        <h2>Add exercises</h2>
+        <input
+          id="userId"
+          type="text"
+          name="userId"
+          placeholder="userId *"
+          required
+        />
+        <input
+          id="description"
+          type="text"
+          name="description"
+          placeholder="description *"
+          required
+        />
+        <input
+          id="duration"
+          type="text"
+          name="duration"
+          placeholder="duration (minutes) *"
+          required
+        />
+        <input
+          id="date"
+          type="text"
+          name="date"
+          placeholder="date (YYYY-MM-DD)"
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <form
+        id="query-log"
+        action="/api/exercise/log?{userId}[&from][&to][&limit]"
+        method="get"
+      >
+        <h2>Query user's exercises</h2>
+        <input
+          id="query-userid"
+          type="text"
+          name="userId"
+          placeholder="userId *"
+          required
+        />
+        <input
+          id="query-from"
+          type="text"
+          name="from"
+          placeholder="from (yyyy-mm-dd)"
+        />
+        <input
+          id="query-to"
+          type="text"
+          name="to"
+          placeholder="to (yyyy-mm-dd)"
+        />
+        <input
+          id="query-limit"
+          type="number"
+          name="limit"
+          placeholder="limit (integer)"
+          min="0"
+        />
+        <input id="query-submit" type="submit" value="Submit" />
+        <code id="result"></code>
+      </form>
+    </div>
+
+    <script>
+
+      const queryLogForm = document.getElementById('query-log');
+      const logResultContainer = document.getElementById('result');
+
+      function queryUrlRefiner(baseUrl) {
+          let queryUrl = baseUrl + document.getElementById('query-userid').value;
+          const from = document.getElementById('query-from').value;
+          const to = document.getElementById('query-to').value;
+          const limit = document.getElementById('query-limit').value;
+          if (from) queryUrl += '&from=' + from;
+          if (to) queryUrl += '&to=' + to;
+          if (limit) queryUrl += '&limit=' + limit;
+          return queryUrl;
+      }
+
+      replaceFormSubmit('/api/exercise/log?userId=', queryLogForm, logResultContainer, queryUrlRefiner);
+
+      const queryAllForm = document.getElementById('query-all-form');
+      const allResultContainer = document.getElementById('result-all');
+      replaceFormSubmit('/api/exercise/users', queryAllForm, allResultContainer);
+
+
+      function replaceFormSubmit(url, form, target, urlRefiner) {
+          form.addEventListener('submit', e => {
+              e.preventDefault();
+              const newUrl = urlRefiner ? urlRefiner(url) : url;
+              fetch(newUrl)
+                  .then(res => res.json())
+                  .then(res => target.innerText = JSON.stringify(res, null, 2))
+                  .catch(err => target.innerText = JSON.stringify(err, null, 2));
+          });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .method-list {
+    margin-top: 1.5rem;
+  }
+</style>
