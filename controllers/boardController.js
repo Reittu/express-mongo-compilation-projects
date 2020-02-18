@@ -21,8 +21,9 @@ exports.allBoards = function(req, res) {
 };
 
 exports.addBoard = function(req, res) {
-  if (!req.body.name) return res.status(400).json("Missing parameter: name");
-  const newBoard = new Board({ name: req.body.name, threads: [] });
+  const name = req.body.name ? req.body.name.trim().replace(/\s+/g, '-') : null;
+  if (!name) return res.status(400).json("Missing parameter: name");
+  const newBoard = new Board({ name, threads: [] });
   newBoard
     .save()
     .then(() => res.redirect("/b/"))
@@ -68,10 +69,12 @@ exports.allThreads = function(req, res) {
 };
 
 exports.addThread = function(req, res) {
+  const text = req.body.text ? text.body.text.trim() : null;
+  if(!text) return res.status(400).json("Missing parameter: text");
   generateHash(req.body.password, saltRounds)
     .then(hash => 
      new Thread({
-        text: req.body.text,
+        text,
         delete_password: hash
       }).save()
     )
@@ -132,10 +135,12 @@ exports.allReplies = function(req, res) {
 };
 
 exports.addReply = function(req, res) {
+  const text = req.body.text ? text.body.text.trim() : null;
+  if(!text) return res.status(400).json("Missing parameter: text");
   generateHash(req.body.password, saltRounds)
     .then(hash => {
       return new Reply({
-        text: req.body.text,
+        text,
         delete_password: hash
       }).save();
     })
