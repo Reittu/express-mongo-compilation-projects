@@ -69,7 +69,7 @@ exports.allThreads = function(req, res) {
 };
 
 exports.addThread = function(req, res) {
-  const text = req.body.text ? text.body.text.trim() : null;
+  const text = req.body.text ? req.body.text.trim() : null;
   if(!text) return res.status(400).json("Missing parameter: text");
   generateHash(req.body.password, saltRounds)
     .then(hash => 
@@ -135,7 +135,7 @@ exports.allReplies = function(req, res) {
 };
 
 exports.addReply = function(req, res) {
-  const text = req.body.text ? text.body.text.trim() : null;
+  const text = req.body.text ? req.body.text.trim() : null;
   if(!text) return res.status(400).json("Missing parameter: text");
   generateHash(req.body.password, saltRounds)
     .then(hash => {
