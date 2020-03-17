@@ -3,7 +3,7 @@ const Visitor = require("../models/visitor.model");
 exports.new = function(req, res) {
   if(!req.headers["x-forwarded-for"]) return res.status(400).json("Visitor logging failed");
   const ip = req.headers["x-forwarded-for"].split(",")[0];
-  if(/^40.94/.test(ip)) return res.status(400).json("Microsoft bot");
+  if(/^40.94/.test(ip)) return res.status(403).json("Microsoft bot");
   const newVisitor = new Visitor({ ip });
   newVisitor
     .save()

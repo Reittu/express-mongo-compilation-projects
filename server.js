@@ -10,7 +10,6 @@ const issueRouter = require("./routes/issues");
 const demoRouter = require("./routes/demos");
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 app.use(
   helmet({
@@ -40,7 +39,7 @@ mongoose.connect(uri, {
 });
 const connection = mongoose.connection;
 connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
+  //console.log("MongoDB database connection established successfully");
 });
 
 app.get("/", (req, res) => {
@@ -52,6 +51,5 @@ app.use("/b", boardRouter);
 app.use("/issues", issueRouter);
 app.use("/demos", demoRouter);
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+// Required for testing (jest & supertest) not to listen here; entry point is therefore index.js.
+module.exports = app;

@@ -1,12 +1,14 @@
 {
-  "name": "fcc-api-projects-boilerplate",
+  "name": "fs-compilation-project",
   "version": "0.0.1",
-  "description": "An FCC Backend Challenge",
-  "main": "server.js",
+  "description": "Compilation if different Full Stack & API projects",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js",
+    "test": "jest --runInBand ./tests"
   },
   "dependencies": {
+    "@shelf/jest-mongodb": "^1.1.3",
     "bcrypt": "^3.0.7",
     "busboy": "^0.3.1",
     "cors": "^2.8.5",
@@ -16,6 +18,10 @@
     "helmet": "^3.21.2",
     "mongoose": "^5.8.4",
     "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
   },
   "engines": {
     "node": "12.13.1"
