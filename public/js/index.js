@@ -22,7 +22,7 @@ replaceFormSubmit(
 function stockUrlRefiner(baseUrl) {
   let newUrl = baseUrl + "stock=" + document.getElementById("stock-one").value;
   const secondStock = document.getElementById("stock-two").value;
-  const stockLike = document.getElementById("stock-like").value;
+  const stockLike = document.getElementById("stock-like").checked;
   if(secondStock) newUrl += "&stock=" + secondStock;
   if(stockLike) newUrl += "&like=true";
   return newUrl

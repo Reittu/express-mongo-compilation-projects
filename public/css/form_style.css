@@ -10,7 +10,7 @@ input, textarea {
   background-color: #dfdfdf;
   border: none;
 }
-teaxtarea { resize: vertical }
+textarea { resize: vertical }
 input:last-of-type {
   margin-bottom: 0;
 }

@@ -13,6 +13,7 @@ exports.index = async function(req, res) {
   const urls = symbols.map(
     url => `https://repeated-alpaca.glitch.me/v1/stock/${url}/quote`
   );
+  if(!req.headers["x-forwarded-for"]) return res.status(501).json({Error: "No x-forwarded-for header; possibly localhost."});
   // Note that this header can be spoofed so this would be abusable for a serious case.
   const ip = req.headers["x-forwarded-for"].split(",")[0];
 

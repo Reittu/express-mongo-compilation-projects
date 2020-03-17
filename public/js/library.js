@@ -26,8 +26,8 @@
             })
         )
         .catch(err => console.log(err));
-    document.getElementById("delete-all").onclick = () =>
-        genericRequest("/api/books", {}, "DELETE", () => location.reload());
+    //document.getElementById("delete-all").onclick = () =>
+    //    genericRequest("/api/books", {}, "DELETE", () => location.reload());
 
     replacePostFormSubmit(
         document.getElementById("new-book-form"),

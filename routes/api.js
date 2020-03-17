@@ -11,6 +11,7 @@ const issue_controller = require("../controllers/issueController");
 const book_controller = require("../controllers/bookController");
 const stock_controller = require("../controllers/stockController");
 const board_controller = require("../controllers/boardController");
+const visitor_controller = require("../controllers/visitorController");
 
 router.route("/").get((req, res) => res.sendFile(process.cwd() + "/views/index.html"));
 
@@ -70,5 +71,8 @@ router.route("/replies/:board").get(board_controller.allReplies); // required on
 router.route("/replies/:board").post(board_controller.addReply);
 router.route("/replies/:board").delete(board_controller.deleteReply); // change text to [deleted]
 router.route("/replies/:board").put(board_controller.reportReply); // report
+
+router.route("/visitors").get(visitor_controller.count);
+router.route("/visitors/new").get(visitor_controller.new);
 
 module.exports = router;
