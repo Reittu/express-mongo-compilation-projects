@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 // Other data-reliant projects in this compilation use client-side/hybrid rendering as opposed to this server side rendering.
 exports.specific = async function specificProject(data) {
     const fetchData = await fetch(
-        "https://reittu.glitch.me/api/issues/" + data.project
+        "https://reittu.azurewebsites.net/api/issues/" + data.project // Requires absolute URI
     )
         .then(res => res.json())
         .catch(err => console.error("Project url possibly changed!", err));
