@@ -30,6 +30,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'reittu'
-        slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_7138b45a036d459baa87ec9f81af0491 }}
-        package: '.'
+        
