@@ -25,6 +25,8 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
+      env:
+        ATLAS_URI: ${{ secrets.ATLAS_URI }}
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
@@ -33,4 +35,3 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_7138b45a036d459baa87ec9f81af0491 }}
         package: '.'
-        
